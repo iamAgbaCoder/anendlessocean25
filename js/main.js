@@ -137,7 +137,7 @@
     updateCountdown(); // Initial call
 
     // Typing Effect
-    const typingTextElement = document.querySelector(".typing-text");
+    const typingTextElements = document.querySelectorAll(".typing-text");
     const phrases = ["We're getting married", "#AnEndlessOcean'25", "November 29th, 2025"];
     let phraseIndex = 0;
     let charIndex = 0;
@@ -146,16 +146,21 @@
 
     function typeEffect() {
         const currentPhrase = phrases[phraseIndex];
+        let currentText = "";
         
         if (isDeleting) {
-            typingTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
+            currentText = currentPhrase.substring(0, charIndex - 1);
             charIndex--;
             typeSpeed = 50;
         } else {
-            typingTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
+            currentText = currentPhrase.substring(0, charIndex + 1);
             charIndex++;
             typeSpeed = 100;
         }
+
+        typingTextElements.forEach(element => {
+            element.textContent = currentText;
+        });
 
         if (!isDeleting && charIndex === currentPhrase.length) {
             isDeleting = true;
@@ -169,7 +174,7 @@
         setTimeout(typeEffect, typeSpeed);
     }
     
-    if(typingTextElement) {
+    if(typingTextElements.length > 0) {
         typeEffect();
     }
 
