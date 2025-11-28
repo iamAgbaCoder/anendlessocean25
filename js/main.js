@@ -138,7 +138,7 @@
 
     // Typing Effect
     const typingTextElements = document.querySelectorAll(".typing-text");
-    const phrases = ["We're getting married", "#AnEndlessOcean'25", "November 29th, 2025"];
+    const phrases = ["We're getting married", "#AnEndlessLove'25", "November 29th, 2025"];
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
